@@ -1,48 +1,44 @@
-const gulp = require('gulp');
-const ugjs = require('gulp-uglify');
-const watch = require('gulp-watch');
-const webpackStream = require('webpack-stream');
-const webpack = require('webpack');
-const named = require('vinyl-named');
-const del = require('del');
-const watchPath = require('gulp-watch-path');
-const replace = require('gulp-replace');
+// 基础gulp模块
+var gulp = require('gulp');
+// webserver服务器
+var webserver = require('gulp-webserver');
+// mock数据
+var url = require('url');
+// FileSystem
+var fs = require('fs');
+// 打包模块
+var webpack = require('gulp-webpack');
+// 命名模块
+var named = require('vinyl-named');
+// sass模块
+// var sass = require('gulp-sass');
+// 压缩css
+var minifyCSS = require('gulp-minify-css');
+// 丑化模块
+var uglify = require('gulp-uglify');
+// 版本模块
+var rev = require('gulp-rev');
+// 版本控制模块
+var revCollector = require('gulp-rev-collector');
+// 压缩html（暂时不用)
+var minifyHTML = require('gulp-minify-html');
+// 监控模块
+watch = require('gulp-watch');
+// 队列模块
+sequence = require('gulp-watch-sequence');
 
-const rev = require('gulp-rev');
-const ifElse = require('gulp-if-else');
-const browserSync = require('browser-sync').create();
-const base64 = require('gulp-base64');
-const runSequence = require('run-sequence');
-const bsReload = browserSync.reload;
-const postcss = require('gulp-postcss'); //postcss本身
-const autoprefixer = require('autoprefixer');
-const precss = require('precss'); //提供像scss一样的语法
-const cssnano = require('cssnano');  //更好用的css压缩!
-const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps');
-const revCollector = require('gulp-rev-collector');
-const exec = require('child_process').exec;
-const CDN = require('./config/cdn');
-console.log(CDN);
-const webpackConfig = require('./config/webpack.base');
 
-const processes = [
-  autoprefixer({browsers: ['last 2 version', 'safari 5', 'opera 12.1', 'ios 6', 'android 4', '> 10%']}),
-  precss,
-  cssnano
-];
-
-const src = {
-  css: './src/**/*.css',
-  images: './src/**/*.{png,jpg,jpeg}',
-  js: './src/**/*.js',
-  views: './src/**/*.html'
+var src = {
+  css: './src/css/*.css',
+  images: './src/images/*.{png,jpg,jpeg}',
+  js: './src/js/*.js',
+  views: './src/*.html'
 };
-const dist = {
-  css: './dist/**/*.css',
-  images: './dist/**/*.{png,jpg,jpeg}',
-  js: './dist/**/*.js',
-  views: './dist/**/*.html'
+var dist = {
+  css: './dist/css/',
+  images: './dist/',
+  js: './dist/js/',
+  views: './dist/'
 };
 
 gulp.task('views', function () {
@@ -61,3 +57,5 @@ gulp.task('js', function () {
   return gulp.src(src.js)
   .pipe(gulp.dest(dist.js));
 });
+
+gulp.task('default', ['views', 'images', 'css', 'js'])
