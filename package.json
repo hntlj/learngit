@@ -4,15 +4,19 @@
   "description": "Course gulp by 1000phone",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack"
   },
   "author": "rongtao.lu",
   "license": "ISC",
   "devDependencies": {
     "amd-optimize": "^0.6.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "browser-sync": "^2.12.10",
     "browserify": "^13.0.1",
     "browserify-shim": "^3.8.12",
+    "css-loader": "^0.28.9",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^3.2.2",
@@ -30,8 +34,13 @@
     "gulp-watch-sequence": "^1.0.0",
     "gulp-webpack": "^1.5.0",
     "gulp-webserver": "^0.9.1",
+    "html-loader": "^0.5.5",
     "imports-loader": "^0.6.5",
+    "path": "^0.12.7",
     "source-map": "^0.5.5",
-    "vinyl-named": "^1.1.0"
+    "url-loader": "^0.6.2",
+    "vinyl-named": "^1.1.0",
+    "webpack": "^3.10.0",
+    "webpack-stream": "^4.0.0"
   }
 }
