@@ -1,2 +1,2 @@
 add LICENSE.txt
-pull test
+pull test 2
