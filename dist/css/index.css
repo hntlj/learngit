@@ -1,0 +1,10 @@
+body{
+	background-color: yellow;
+}
+.title{
+	font-size: 30px;
+	color: red;
+}
+.draw{
+	width: 100%;
+}
